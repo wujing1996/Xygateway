@@ -1,0 +1,109 @@
+[
+    {
+        "id":"gateway-1",
+        "order":0,
+        "filters":[
+            {
+                "name":"StripPrefix",
+                "args":{
+                    "parts":"1"
+                }
+            }
+        ],
+        "predicates":[
+            {
+                "args":{
+                    "_genkey_0":"/gateway/**"
+                },
+                "name":"Path"
+            }
+        ],
+        "uri":"lb://gateway"
+    },
+    {
+        "id": "gateway-2",
+        "order": 0,
+        "filters": [],
+        "predicates": [
+            {
+                "args": {
+                    "pattern": "/api/gateway/**"
+                },
+                "name": "Path"
+            }
+        ],
+        "uri": "lb://gateway"
+    },
+    {
+        "id": "merchants-1",
+        "order": 0,
+        "filters": [
+            {
+                "name": "StripPrefix",
+                "args": {
+                    "_genkey_0": "1"
+                }
+            }
+        ],
+        "predicates": [
+            {
+                "args": {
+                    "pattern": "/merchants/**"
+                },
+                "name": "Path"
+            }
+        ],
+        "uri": "lb://merchants"
+    },
+    {
+        "id": "merchants-2",
+        "order": 0,
+        "filters": [],
+        "predicates": [
+            {
+                "args": {
+                    "pattern": "/api/merchants/**"
+                },
+                "name": "Path"
+            }
+        ],
+        "uri": "lb://merchants"
+    },
+    {
+        "id":"registration-1",
+        "order":0,
+        "filters":[
+            {
+                "name":"StripPrefix",
+                "args":{
+                    "_genkey_0":"1"
+                }
+            }
+        ],
+        "predicates":[
+            {
+                "args":{
+                    "pattern":"/registration/**"
+                },
+                "name":"Path"
+            }
+        ],
+        "uri":"lb://registration"
+    },
+    {
+        "id":"registration-2",
+        "order":0,
+        "filters":[
+
+        ],
+        "predicates":[
+            {
+                "args":{
+                    "pattern":"/api/registration/**"
+                },
+                "name":"Path"
+            }
+        ],
+        "uri":"lb://registration"
+    }
+]

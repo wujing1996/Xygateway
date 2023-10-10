@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: apigateway
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+
+  #Nacos相关配置, namespace 本地调试使用 spring.cloud.nacos.discovery
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: open.dev.simmed.cn:8848
+        group: DEFAULT_GROUP
+        namespace: local_dev
+        ext-config:
+          - data-id: zipkin.yml
+            group: DEFAULT_GROUP
+            refresh: true
+      discovery:
+        server-addr: open.dev.simmed.cn:8848
+        group: DEFAULT_GROUP
+        namespace: local_dev
